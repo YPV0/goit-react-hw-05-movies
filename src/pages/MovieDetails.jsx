@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { getMovieDetails } from 'components/API/API';
 import { useParams, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Suspense } from 'react';
+import PropTypes from 'prop-types';
+
 import {
   Card,
   GenreList,
@@ -72,3 +74,7 @@ const MovieDetails = () => {
 };
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  movieId: PropTypes.string.isRequired,
+};

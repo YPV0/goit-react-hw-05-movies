@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { getMovieReviews } from 'components/API/API';
+import PropTypes from 'prop-types';
+
 import { ReviewItem, ReviewsList, StyledLink, StyledP } from './Reviews.styled';
 
 const Reviews = () => {
@@ -39,3 +41,6 @@ const Reviews = () => {
 };
 
 export default Reviews;
+Reviews.propTypes = {
+  movieId: PropTypes.string.isRequired,
+};
