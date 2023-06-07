@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { getMovieReviews } from 'components/API/API';
+import { ReviewItem, ReviewsList, StyledLink, StyledP } from './Reviews.styled';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState('');
@@ -15,21 +16,24 @@ const Reviews = () => {
 
   return (
     <>
-      <ul>
-        {reviews &&
+      <ReviewsList>
+        {reviews.length > 0 ? (
           reviews.map(review => (
-            <li key={review.id}>
-              <Link
+            <ReviewItem key={review.id}>
+              <StyledLink
                 to={{
                   pathname: `/reviews/${review.id}`,
                   state: { from: location },
                 }}
               >
                 <p>{review.author}</p>
-              </Link>
-            </li>
-          ))}
-      </ul>
+              </StyledLink>
+            </ReviewItem>
+          ))
+        ) : (
+          <StyledP>We don't have any reviews for this movie</StyledP>
+        )}
+      </ReviewsList>
     </>
   );
 };

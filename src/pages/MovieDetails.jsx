@@ -1,12 +1,22 @@
 import { useState, useEffect } from 'react';
 import { getMovieDetails } from 'components/API/API';
-import { useParams, Outlet, NavLink, useLocation } from 'react-router-dom';
+import { useParams, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Suspense } from 'react';
+import {
+  Card,
+  GenreList,
+  InfoWrapper,
+  MovieTitle,
+  OverviewTitle,
+  StyledDiv,
+  StyledLink,
+} from './MovieDetails.styled';
 
 export const MovieDetails = () => {
   const [movie, setMovie] = useState('');
   const { movieId } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getMovieDetails(movieId).then(data => setMovie(data));
@@ -22,27 +32,38 @@ export const MovieDetails = () => {
       ? `/movies/${movieId}`
       : `/movies/${movieId}/reviews`;
 
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   return (
     <>
-      <h1>{movie.title}</h1>
-      <p>User Score: {movie.vote_average * 10}%</p>
-      {movie.poster_path && (
-        <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.title}
-        />
-      )}
-      <h2>Overview</h2>
-      <p>{movie.overview}</p>
-      <h3>Genres</h3>
-      <ul>
-        <li>
-          <NavLink to={castPath}>Cast</NavLink>
-        </li>
-        <li>
-          <NavLink to={reviewsPath}>Reviews</NavLink>
-        </li>
-      </ul>
+      <StyledDiv>
+        <button onClick={handleGoBack}>Go Back</button>
+        <Card>
+          <MovieTitle>{movie.title}</MovieTitle>
+          <p>User Score: {movie.vote_average * 10}%</p>
+          {movie.poster_path && (
+            <img
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title}
+            />
+          )}
+        </Card>
+        <InfoWrapper>
+          <OverviewTitle>Overview</OverviewTitle>
+          <p>{movie.overview}</p>
+          <h3>Genres</h3>
+          <GenreList>
+            <li>
+              <StyledLink to={castPath}>Cast</StyledLink>
+            </li>
+            <li>
+              <StyledLink to={reviewsPath}>Reviews</StyledLink>
+            </li>
+          </GenreList>
+        </InfoWrapper>
+      </StyledDiv>
       <Suspense fallback={<h1>Loading...</h1>}>
         <Outlet />
       </Suspense>
