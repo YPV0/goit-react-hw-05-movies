@@ -4,6 +4,7 @@ import { Movies } from 'pages/movies';
 import { lazy, Suspense } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import { NavLinkItem, NavList } from './App.styled';
+import { NotFound } from 'pages/NotFound';
 
 const Cast = lazy(() => import('components/Cast/Cast'));
 const Reviews = lazy(() => import('components/Reviews/Reviews'));
@@ -27,6 +28,7 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </>
