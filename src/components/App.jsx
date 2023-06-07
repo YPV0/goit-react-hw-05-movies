@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import { NavLinkItem, NavList } from './App.styled';
 import Home from 'pages/home';
