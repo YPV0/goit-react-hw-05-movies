@@ -3,6 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 export const ReviewsList = styled.ul`
   list-style: none;
+  margin-left: 100px;
   padding: 0;
 `;
 
@@ -13,6 +14,7 @@ export const ReviewItem = styled.li`
 export const StyledLink = styled(RouterLink)`
   color: inherit;
   text-decoration: none;
+  font-size: 20px;
 
   &:hover {
     color: inherit;
