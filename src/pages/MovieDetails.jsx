@@ -76,5 +76,5 @@ const MovieDetails = () => {
 export default MovieDetails;
 
 MovieDetails.propTypes = {
-  movieId: PropTypes.string.isRequired,
+  movieId: PropTypes.string,
 };
