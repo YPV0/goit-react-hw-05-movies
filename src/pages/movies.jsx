@@ -12,7 +12,7 @@ import {
 import { MovieItem } from './home.styled';
 import { MovieTitle } from './MovieDetails.styled';
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState('');
   const [search, setSearch] = useState('');
   const [searchParams] = useSearchParams();
@@ -73,3 +73,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies;

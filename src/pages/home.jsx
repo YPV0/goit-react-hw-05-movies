@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getTrending } from 'components/API/API';
 import { HomeTitle, MovieItem, MovieLink, MovieList } from './home.styled';
 
-export const Home = () => {
+const Home = () => {
   const [trending, setTrending] = useState('');
 
   useEffect(() => {
@@ -27,3 +27,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

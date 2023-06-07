@@ -12,7 +12,7 @@ import {
   StyledLink,
 } from './MovieDetails.styled';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movie, setMovie] = useState('');
   const { movieId } = useParams();
   const location = useLocation();
@@ -70,3 +70,5 @@ export const MovieDetails = () => {
     </>
   );
 };
+
+export default MovieDetails;
