@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getMovieDetails } from 'API/API';
 import { useParams, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Suspense } from 'react';
-import PropTypes from 'prop-types';
+
 
 import {
   Card,
@@ -34,9 +34,11 @@ const MovieDetails = () => {
       ? `/movies/${movieId}`
       : `/movies/${movieId}/reviews`;
 
-  const handleGoBack = () => {
-    navigate(-1);
-  };
+      const handleGoBack = () => {
+        const lastLocation = sessionStorage.getItem('lastLocation');
+        navigate(lastLocation || '/');
+      };
+      
 
   return (
     <>
@@ -75,6 +77,3 @@ const MovieDetails = () => {
 
 export default MovieDetails;
 
-MovieDetails.propTypes = {
-  movieId: PropTypes.string,
-};

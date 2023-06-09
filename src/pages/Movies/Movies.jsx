@@ -12,7 +12,6 @@ import {
   StyledLink,
 } from './Movies.styled';
 
-
 const Movies = () => {
   const [movies, setMovies] = useState('');
   const [search, setSearch] = useState('');
@@ -38,6 +37,10 @@ const Movies = () => {
       setSearch('');
     }
   };
+  const handleLinkClick = movieId => {
+    sessionStorage.setItem('lastLocation', location.pathname + location.search);
+    navigate(`/movies/${movieId}`);
+  };
 
   return (
     <>
@@ -59,9 +62,10 @@ const Movies = () => {
             return (
               <MovieItem key={movie.id}>
                 <StyledLink
-                  to={{
-                    pathname: `/movies/${movie.id}`,
-                    state: { from: location, searchQuery: search },
+                  to="#"
+                  onClick={e => {
+                    e.preventDefault();
+                    handleLinkClick(movie.id);
                   }}
                 >
                   <MovieImage src={movieImage} alt={movie.title} />
