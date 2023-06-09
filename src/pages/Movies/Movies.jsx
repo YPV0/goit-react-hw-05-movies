@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useLocation, useNavigate } from 'react-router-dom';
-import { getMovies } from 'components/API/API';
+import { getMovies } from 'API/API';
 import {
   MovieImage,
+  MovieItem,
+  MovieTitle,
   MoviesList,
   SearchButton,
   SearchForm,
   SearchInput,
   StyledLink,
 } from './Movies.styled';
-import { MovieItem } from './home.styled';
-import { MovieTitle } from './MovieDetails.styled';
+
 
 const Movies = () => {
   const [movies, setMovies] = useState('');
@@ -60,7 +61,7 @@ const Movies = () => {
                 <StyledLink
                   to={{
                     pathname: `/movies/${movie.id}`,
-                    state: { from: location },
+                    state: { from: location, searchQuery: search },
                   }}
                 >
                   <MovieImage src={movieImage} alt={movie.title} />

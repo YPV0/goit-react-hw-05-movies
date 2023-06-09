@@ -4,10 +4,10 @@ import { NavLinkItem, NavList } from './App.styled';
 
 const Cast = lazy(() => import('./Cast/Cast'));
 const Reviews = lazy(() => import('./Reviews/Reviews'));
-const Home = lazy(() => import('../pages/home'));
-const Movies = lazy(() => import('../pages/movies'));
-const MovieDetails = lazy(() => import('../pages/MovieDetails'));
-const NotFound = lazy(() => import('../pages/NotFound'));
+const Home = lazy(() => import('../pages/Home/Home'));
+const Movies = lazy(() => import('../pages/Movies/Movies'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
+const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
 
 export const App = () => {
   return (

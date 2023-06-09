@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import { getMovieCast } from 'components/API/API';
+import { getMovieCast } from 'API/API';
 import PropTypes from 'prop-types';
 
 import {

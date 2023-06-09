@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { getTrending } from 'components/API/API';
-import { HomeTitle, MovieItem, MovieLink, MovieList } from './home.styled';
+import { getTrending } from 'API/API';
+import { HomeTitle, MovieItem, MovieLink, MovieList } from './Home.styled';
 
 const Home = () => {
   const [trending, setTrending] = useState('');
